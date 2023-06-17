@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    name { 'MyString' }
+    name { Faker::Name.name }
     email { Faker::Internet.email }
     password_digest { Faker::Internet.password(min_length: 8) }
     token_password_recovery { rand(1..999) }

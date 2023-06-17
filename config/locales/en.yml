@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  user:
+    errors:
+      not_found: 'User not found'
+    regiter_company: 
+      errors: 'Error on creating company'
