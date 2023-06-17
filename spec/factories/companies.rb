@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :company do
-    document { 'MyString' }
-    legal_name { 'MyString' }
-    trade_name { 'MyString' }
+    document { Faker::Company.brazilian_company_number }
+    legal_name { Faker::Company.name }
+    trade_name { Faker::Company.suffix }
   end
 end
