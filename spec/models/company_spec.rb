@@ -9,4 +9,5 @@ RSpec.describe Company, type: :model do
   it { is_expected.to validate_uniqueness_of(:legal_name).case_insensitive }
 
   it { is_expected.to have_one(:address) }
+  it { is_expected.to have_many(:phones) }
 end

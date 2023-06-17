@@ -7,4 +7,5 @@ class Company < ApplicationRecord
 
   # relationships
   has_one :address, as: :addressable
+  has_many :phones, as: :phoneble
 end

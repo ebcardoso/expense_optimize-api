@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_617_163_125) do
+ActiveRecord::Schema[7.0].define(version: 20_230_617_165_300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
@@ -48,5 +48,17 @@ ActiveRecord::Schema[7.0].define(version: 20_230_617_163_125) do
     t.index ['document'], name: 'index_companies_on_document'
     t.index ['legal_name'], name: 'index_companies_on_legal_name'
     t.index ['trade_name'], name: 'index_companies_on_trade_name'
+  end
+
+  create_table 'phones', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.integer 'phone_type'
+    t.string 'phone_number'
+    t.string 'phoneble_type', null: false
+    t.uuid 'phoneble_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['phone_number'], name: 'index_phones_on_phone_number'
+    t.index ['phone_type'], name: 'index_phones_on_phone_type'
+    t.index %w[phoneble_type phoneble_id], name: 'index_phones_on_phoneble'
   end
 end
