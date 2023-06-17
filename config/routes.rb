@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :onboarding do
       post :register_company
+      post :add_address_company
     end
   end
 end
