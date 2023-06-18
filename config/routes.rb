@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :onboarding do
       post :register_company
       post :add_address_company
+      post :add_phone_company
     end
   end
 end

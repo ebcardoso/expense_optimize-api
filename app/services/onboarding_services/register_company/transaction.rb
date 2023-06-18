@@ -26,7 +26,7 @@ module OnboardingServices
         if model.save
           Success(model)
         else
-          Failure(I18n.t('company.create.errors'))
+          Failure(model.errors.full_messages.to_sentence)
         end
       end
 

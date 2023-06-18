@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module OnboardingServices
-  module AddAddressCompany
+  module AddPhoneCompany
     class Transaction < MainService
       step :validate_inputs
       step :persist_model
@@ -18,20 +18,16 @@ module OnboardingServices
       end
 
       def persist_model(params)
-        model = Address.new
-        model.zip_code = params[:zip_code]
-        model.address = params[:address]
-        model.address_number = params[:address_number]
-        model.complement = params[:complement]
-        model.neighborhood = params[:neighborhood]
-        model.state = params[:state]
-        model.city = params[:city]
-        model.addressable_type = 'Company'
-        model.addressable_id = params[:company_id]
+        model = Phone.new
+        model.phone_type = params[:phone_type]
+        model.phone_number = params[:phone_number]
+        model.phoneble_type = 'Company'
+        model.phoneble_id = params[:company_id]
 
         if model.save
           Success(model)
         else
+          debugger
           Failure(model.errors.full_messages.to_sentence)
         end
       end
@@ -39,13 +35,8 @@ module OnboardingServices
       def output(model)
         response = {
           id: model.id.to_s,
-          zip_code: model.zip_code,
-          address: model.address,
-          address_number: model.address_number,
-          complement: model.complement,
-          neighborhood: model.neighborhood,
-          state: model.state,
-          city: model.city,
+          phone_type: model.phone_type,
+          phone_number: model.phone_number,
           registered_at: model.created_at.strftime('%d/%m/%Y %H:%M')
         }
         Success(response)
