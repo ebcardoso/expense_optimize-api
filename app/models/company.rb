@@ -6,6 +6,7 @@ class Company < ApplicationRecord
   validates :document, :legal_name, uniqueness: { case_sensitive: false }
 
   # relationships
-  has_one :address, as: :addressable
-  has_many :phones, as: :phoneble
+  has_one :address, as: :addressable, dependent: :destroy
+  has_many :phones, as: :phoneble, dependent: :destroy
+  has_many :users, dependent: :destroy
 end
