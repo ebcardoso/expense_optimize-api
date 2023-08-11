@@ -8,5 +8,11 @@ class User < ApplicationRecord
   # relationships
   has_one :address, as: :addressable
   has_many :phones, as: :phoneble
+  has_many   :user_profiles, dependent: :destroy
+  has_many   :profiles, through: :user_profiles
+
+  # Nested attributes
+  accepts_nested_attributes_for :user_profiles
+
   belongs_to :company
 end
