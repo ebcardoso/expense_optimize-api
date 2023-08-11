@@ -36,6 +36,10 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 gem 'dry-transaction'
 gem 'dry-validation'
+
+# CanCan is an authorization library for Ruby on Rails which restricts what resources a given user is allowed to access.
+gem "cancan"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
 
